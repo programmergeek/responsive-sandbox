@@ -1,8 +1,30 @@
 /* eslint-disable no-undef */
 module.exports = {
   content: ["./src/**/*.{js,ts,tsx,jsx}"],
+  darkMode: "class",
   theme: {
-    extend: {}
+    screen: {
+      sm: "450px",
+      md: "700px",
+      lg: "900px",
+      xl: "1440px",
+    },
+    colors: {
+      darkModeDark: "#0c1d12",
+      darkModeMid: "#0d3125",
+      darkModeLight: "#119667",
+      lightModeDark: "#0cd474",
+      lightModeMid: "#8ef0b5",
+      lightModeLight: "#d0ebdc",
+      white: "#fff",
+      black: "#000",
+      darkModeDisabled: "#505050",
+      lightModeDisabled: "#a1a1a1",
+    },
+    fontFamily: {
+      sans: ["Work Sans", "sans-serif"],
+    },
+    extend: {},
   },
-  plugins: []
+  plugins: [],
 };
