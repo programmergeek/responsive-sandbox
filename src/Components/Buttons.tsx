@@ -1,13 +1,30 @@
 import React from "react";
 
 type ButtonProps = {
-  disabled: boolean;
-  iconStart: Node;
-  iconEnd: Node;
-  type: "primary" | "secondary" | "tertiary";
-  onClick: () => void;
+  disabled?: boolean;
+  iconStart?: Node;
+  iconEnd?: Node;
+  type?: "primary" | "secondary" | "tertiary";
+  onClick?: () => void;
 };
 
 export const Button: React.FC<ButtonProps> = ({ ...props }) => {
-  return <button>{props.children}</button>;
+  const buttonTypes = {
+    primary:
+      "bg-lightModeDark active:bg-lightModeMid dark:bg-darkModeMid dark:active:bg-darkModeDark dark:hover:bg-darkModeMid dark:text-white disabled:bg-lightModeDisabled dark:disabled:bg-darkModeDisabled",
+    secondary:
+      "bg-transparent text-black border-2 border-black dark:text-white dark:border-white hover:text-lightModeDark hover:border-lightModeDark dark:hover:text-darkModeLight dark:hover:border-darkModeLight active:text-black active:border-black dark:active:text-white dark:active:border-white disabled:cursor-not-allowed disabled:text-lightModeDisabled disabled:border-lightModeDisabled dark:disabled:text-darkModeDisabled dark:disabled:border-darkModeDisabled",
+    tertiary: "te",
+  };
+  return (
+    <button
+      onClick={() => (props.onClick ? props.onClick() : null)}
+      disabled={props.disabled}
+      className={`px-[16px] py-[12px] font-sans text-base  rounded-md text-center ${
+        props.type ? buttonTypes[props.type] : buttonTypes["primary"]
+      }`}
+    >
+      {props.children}
+    </button>
+  );
 };
