@@ -14,7 +14,7 @@ module.exports = {
       darkModeMid: "#15543d",
       darkModeLight: "#119667",
       lightModeDark: "#0cd474",
-      lightModeMid: "#8ef0b5",
+      lightModeMid: "#62bf87",
       lightModeLight: "#d0ebdc",
       white: "#fff",
       black: "#000",
