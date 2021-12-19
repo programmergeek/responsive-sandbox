@@ -11,14 +11,14 @@ module.exports = {
     },
     colors: {
       darkModeDark: "#0c1d12",
-      darkModeMid: "#0d3125",
+      darkModeMid: "#15543d",
       darkModeLight: "#119667",
       lightModeDark: "#0cd474",
       lightModeMid: "#8ef0b5",
       lightModeLight: "#d0ebdc",
       white: "#fff",
       black: "#000",
-      darkModeDisabled: "#505050",
+      darkModeDisabled: "#8e8e8e",
       lightModeDisabled: "#a1a1a1",
     },
     fontFamily: {
