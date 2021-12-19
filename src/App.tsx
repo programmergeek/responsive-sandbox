@@ -4,9 +4,9 @@ import { Button } from "./Components";
 
 function App() {
   return (
-    <div className="App h-full w-full">
+    <div className="App dark h-full w-full">
       <div className="dark:bg-darkModeDark w-full h-full">
-        <Button onClick={() => console.log("click")} type="secondary" disabled>
+        <Button onClick={() => console.log("click")} type="tertiary" disabled>
           This is Sparta
         </Button>
       </div>

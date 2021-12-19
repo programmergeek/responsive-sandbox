@@ -14,7 +14,8 @@ export const Button: React.FC<ButtonProps> = ({ ...props }) => {
       "bg-lightModeDark active:bg-lightModeMid dark:bg-darkModeMid dark:active:bg-darkModeDark dark:hover:bg-darkModeMid dark:text-white disabled:bg-lightModeDisabled dark:disabled:bg-darkModeDisabled",
     secondary:
       "bg-transparent text-black border-2 border-black dark:text-white dark:border-white hover:text-lightModeDark hover:border-lightModeDark dark:hover:text-darkModeLight dark:hover:border-darkModeLight active:text-black active:border-black dark:active:text-white dark:active:border-white disabled:cursor-not-allowed disabled:text-lightModeDisabled disabled:border-lightModeDisabled dark:disabled:text-darkModeDisabled dark:disabled:border-darkModeDisabled",
-    tertiary: "te",
+    tertiary:
+      "bg-transparent text-lightModeDark hover:text-lightModeMid active:text-lightModeDark focus:underline disabled:text-lightModeDisabled dark:text-darkModeLight dark:hover:text-darkModeMid dark:active:text-darkModeLight dark:disabled:text-darkModeDisabled disabled:cursor-not-allowed",
   };
   return (
     <button
