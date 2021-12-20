@@ -6,7 +6,7 @@ type ButtonProps = {
   iconEnd?: ReactElement;
   type?: "primary" | "secondary" | "tertiary";
   onClick?: () => void;
-  href: string;
+  href?: string;
 };
 
 export const Button: React.FC<ButtonProps> = ({ ...props }) => {
