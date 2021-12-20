@@ -6,6 +6,7 @@ type ButtonProps = {
   iconEnd?: ReactElement;
   type?: "primary" | "secondary" | "tertiary";
   onClick?: () => void;
+  href: string;
 };
 
 export const Button: React.FC<ButtonProps> = ({ ...props }) => {
@@ -25,15 +26,37 @@ export const Button: React.FC<ButtonProps> = ({ ...props }) => {
         props.type ? buttonTypes[props.type] : buttonTypes["primary"]
       }`}
     >
-      <div className="flex justify-center">
-        {props.iconStart ? (
-          <div className="w-8 h-8">{props.iconStart}</div>
-        ) : (
-          ""
-        )}
-        <span className="mt-2 ml-2">{props.children}</span>
-        {props.iconEnd ? <div className="w-10 h-10">{props.iconEnd}</div> : ""}
-      </div>
+      {props.href ? (
+        <a href={props.href}>
+          <div className="flex justify-center">
+            {props.iconStart ? (
+              <div className="w-8 h-8">{props.iconStart}</div>
+            ) : (
+              ""
+            )}
+            <span className="mt-2 ml-2">{props.children}</span>
+            {props.iconEnd ? (
+              <div className="w-10 h-10">{props.iconEnd}</div>
+            ) : (
+              ""
+            )}
+          </div>
+        </a>
+      ) : (
+        <div className="flex justify-center">
+          {props.iconStart ? (
+            <div className="w-8 h-8">{props.iconStart}</div>
+          ) : (
+            ""
+          )}
+          <span className="mt-2 ml-2">{props.children}</span>
+          {props.iconEnd ? (
+            <div className="w-10 h-10">{props.iconEnd}</div>
+          ) : (
+            ""
+          )}
+        </div>
+      )}
     </button>
   );
 };
