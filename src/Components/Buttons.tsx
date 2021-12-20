@@ -37,3 +37,28 @@ export const Button: React.FC<ButtonProps> = ({ ...props }) => {
     </button>
   );
 };
+
+type IconButtonProps = {
+  disabled?: boolean;
+  buttonIcon: ReactElement;
+  href?: string;
+  onClick?: () => void;
+};
+
+export const IconButton: React.FC<IconButtonProps> = ({ ...props }) => {
+  return (
+    <button
+      onClick={() => (props.onClick ? props.onClick() : null)}
+      disabled={props.disabled}
+      className="rounded-full bg-lightModeDark hover:bg-lightModeMid active:bg-lightModeDark disabled:bg-lightModeDisabled dark:bg-darkModeMid dark:hover:bg-darkModeLight dark:active:bg-darkModeMid dark:disabled:bg-darkModeDisabled text-white disabled:cursor-not-allowed"
+    >
+      {props.href ? (
+        <a href={props.href ? props.href : ""}>
+          <div className="w-8 h-8 m-3">{props.buttonIcon}</div>
+        </a>
+      ) : (
+        <div className="w-8 h-8 m-3">{props.buttonIcon}</div>
+      )}
+    </button>
+  );
+};
