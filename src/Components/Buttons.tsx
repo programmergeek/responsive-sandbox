@@ -1,9 +1,9 @@
-import React from "react";
+import React, { ReactElement } from "react";
 
 type ButtonProps = {
   disabled?: boolean;
-  iconStart?: Node;
-  iconEnd?: Node;
+  iconStart?: ReactElement;
+  iconEnd?: ReactElement;
   type?: "primary" | "secondary" | "tertiary";
   onClick?: () => void;
 };
@@ -25,7 +25,15 @@ export const Button: React.FC<ButtonProps> = ({ ...props }) => {
         props.type ? buttonTypes[props.type] : buttonTypes["primary"]
       }`}
     >
-      {props.children}
+      <div className="flex justify-center">
+        {props.iconStart ? (
+          <div className="w-8 h-8">{props.iconStart}</div>
+        ) : (
+          ""
+        )}
+        <span className="mt-2 ml-2">{props.children}</span>
+        {props.iconEnd ? <div className="w-10 h-10">{props.iconEnd}</div> : ""}
+      </div>
     </button>
   );
 };
