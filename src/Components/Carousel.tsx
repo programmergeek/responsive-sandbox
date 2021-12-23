@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from "react";
+import React, { useState } from "react";
 
 // prop type definition
 
@@ -14,7 +14,7 @@ type carouselProps = {
 type indicatorProps = {
   numOfSlides: number;
   currentSlide: number;
-  setCurrentSlide: () => void;
+  setCurrentSlide: (val: number) => void;
 };
 
 /**
@@ -28,14 +28,14 @@ const indicators = (
   currentSlide: number
 ): JSX.Element[] => {
   const indicators = [];
-  for (let i = 1; i <= numOfSlides; i++) {
+  for (let i = 0; i < numOfSlides; i++) {
     if (currentSlide === i) {
       indicators.push(
-        <div className="w-5 h-5 bg-lightModeDark rounded-full border-lightModeDark dark:bg-darkModeMid dark:border-darkModeMid"></div>
+        <div className="w-4 h-4 cursor-pointer bg-lightModeDark rounded-full border-lightModeDark dark:bg-darkModeMid dark:border-darkModeMid"></div>
       );
     } else {
       indicators.push(
-        <div className="w-5 h-5 rounded-full border-4 border-lightModeDark dark:border-darkModeMid"></div>
+        <div className="w-4 h-4 cursor-pointer rounded-full border-[3px] border-lightModeDark dark:border-darkModeMid"></div>
       );
     }
   }
@@ -44,10 +44,14 @@ const indicators = (
 
 const Indicator: React.FC<indicatorProps> = ({ ...props }) => {
   return (
-    <div>
+    <div className="flex flex-row">
       {indicators(props.numOfSlides, props.currentSlide).map((i, key) => {
         return (
-          <div key={key} className="mx-2">
+          <div
+            key={key}
+            className="mx-1"
+            onClick={() => props.setCurrentSlide(key)}
+          >
             {i}
           </div>
         );
@@ -63,15 +67,14 @@ const Indicator: React.FC<indicatorProps> = ({ ...props }) => {
  *
  */
 export const Carousel: React.FC<carouselProps> = ({ ...props }) => {
-  const [currentSlide, setCurrentSlide] = useState<number>(1);
+  const [currentSlide, setCurrentSlide] = useState<number>(0);
   return (
-    <div className="flex">
-      {" "}
+    <div>
       <Indicator
-        currentSlide={1}
+        currentSlide={currentSlide}
         numOfSlides={5}
-        setCurrentSlide={() => console.log("")}
-      />{" "}
+        setCurrentSlide={setCurrentSlide}
+      />
     </div>
   );
 };
