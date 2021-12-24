@@ -27,12 +27,21 @@ type indicatorProps = {
  * be used to determine the true order of the elements.
  */
 
-const changeSlideLoop = (elements: JSX.Element[]) => {
+const changeSlideLeftLoop = (elements: JSX.Element[]) => {
   const temp = elements[0];
   for (let i = 0; i < elements.length - 1; i++) {
     elements[i] = elements[i + 1];
   }
   elements[elements.length - 1] = temp;
+  return elements;
+};
+
+const changeSlideRightLoop = (elements: JSX.Element[]) => {
+  const temp = elements[elements.length - 1];
+  for (let i = elements.length - 1; i > 0; i--) {
+    elements[i] = elements[i - 1];
+  }
+  elements[0] = temp;
   return elements;
 };
 
