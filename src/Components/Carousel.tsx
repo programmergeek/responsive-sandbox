@@ -18,6 +18,25 @@ type indicatorProps = {
 };
 
 /**
+ * Looping:
+ * Assuming you have an array of elements, every time you move onto the next slide,
+ * you are going to move the previous element to the end of the array and then shift all
+ * the elements in the array to the left.
+ *
+ * To avoid breaking the indicator implementation, give all the elements a property that can
+ * be used to determine the true order of the elements.
+ */
+
+const changeSlideLoop = (elements: JSX.Element[]) => {
+  const temp = elements[0];
+  for (let i = 0; i < elements.length - 1; i++) {
+    elements[i] = elements[i + 1];
+  }
+  elements[elements.length - 1] = temp;
+  return elements;
+};
+
+/**
  * Indicator:
  * Shows which slide you are currently on.
  * Can be used to navigate to any slide by clicking on the corresponding slide indicator.
