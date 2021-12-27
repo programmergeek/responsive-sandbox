@@ -7,7 +7,11 @@ function App() {
   return (
     <div className="App h-full w-full">
       <div className="dark:bg-darkModeDark w-full h-full">
-        <Carousel />
+        <Carousel>
+          <div className="bg-black text-6xl text-center text-white">1</div>
+          <div className="bg-black text-6xl text-center text-white">2</div>
+          <div className="bg-black text-6xl text-center text-white">3</div>
+        </Carousel>
       </div>
     </div>
   );

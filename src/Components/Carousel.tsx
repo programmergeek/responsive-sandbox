@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { IconButton } from ".";
+import { ChevronRight } from "@styled-icons/boxicons-regular/ChevronRight";
+import { ChevronLeft } from "@styled-icons/boxicons-regular/ChevronLeft";
 
 // prop type definition
 
@@ -15,6 +18,15 @@ type indicatorProps = {
   numOfSlides: number;
   currentSlide: number;
   setCurrentSlide: (val: number) => void;
+};
+
+type navButtonsProps = {
+  currentSlide: number;
+  setCurrentSlide: React.Dispatch<React.SetStateAction<number>>;
+  shouldLoop: boolean;
+  isVisible: boolean;
+  amountOfSlides: number;
+  children?: JSX.Element[];
 };
 
 /**
@@ -43,6 +55,87 @@ const changeSlideRightLoop = (elements: JSX.Element[]) => {
   }
   elements[0] = temp;
   return elements;
+};
+
+/**
+ * Navigation buttons:
+ * They are visible by default but can be made invisible.
+ * controls whether to move to the slide on your left or right.
+ * if looping is not active the left button nav button should disable if the current slide is the first slide and the right should deactivate when the current slide is the last slide
+ *
+ */
+
+const NavRight: React.FC<navButtonsProps> = ({ ...props }) => {
+  const [disabled, setDisable] = useState(false);
+
+  switch (props.shouldLoop) {
+    case true:
+      return (
+        <div>
+          <IconButton
+            buttonIcon={<ChevronRight />}
+            onClick={() => {
+              if (props.currentSlide > props.amountOfSlides - 2) {
+                props.setCurrentSlide(() => 0);
+              } else {
+                props.setCurrentSlide((current) => current + 1);
+              }
+            }}
+          />
+        </div>
+      );
+      break;
+    default:
+      return (
+        <IconButton
+          disabled={disabled}
+          buttonIcon={<ChevronRight />}
+          onClick={() => {
+            props.setCurrentSlide((current) => current + 1);
+            setDisable(() => false);
+            if (props.currentSlide >= props.amountOfSlides - 2) {
+              setDisable(() => true);
+            }
+          }}
+        />
+      );
+  }
+};
+const NavLeft: React.FC<navButtonsProps> = ({ ...props }) => {
+  const [disabled, setDisable] = useState(false);
+
+  switch (props.shouldLoop) {
+    case true:
+      return (
+        <div>
+          <IconButton
+            buttonIcon={<ChevronLeft />}
+            onClick={() => {
+              if (props.currentSlide < 0) {
+                props.setCurrentSlide(() => props.amountOfSlides - 2);
+              } else {
+                props.setCurrentSlide((current) => current - 1);
+              }
+            }}
+          />
+        </div>
+      );
+      break;
+    default:
+      return (
+        <IconButton
+          disabled={disabled}
+          buttonIcon={<ChevronLeft />}
+          onClick={() => {
+            props.setCurrentSlide((current) => current - 1);
+            setDisable(() => false);
+            if (props.currentSlide == 1) {
+              setDisable(() => true);
+            }
+          }}
+        />
+      );
+  }
 };
 
 /**
@@ -96,12 +189,32 @@ const Indicator: React.FC<indicatorProps> = ({ ...props }) => {
  */
 export const Carousel: React.FC<carouselProps> = ({ ...props }) => {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
+  const children = props.children?.valueOf() as JSX.Element[];
   return (
     <div>
+      {props.children
+        ? children.map((i, key) => {
+            return <div key={key}>{i}</div>;
+          })
+        : ""}
       <Indicator
         currentSlide={currentSlide}
-        numOfSlides={5}
+        numOfSlides={10}
         setCurrentSlide={setCurrentSlide}
+      />
+      <NavRight
+        currentSlide={currentSlide}
+        isVisible={true}
+        setCurrentSlide={setCurrentSlide}
+        shouldLoop={false}
+        amountOfSlides={10}
+      />
+      <NavLeft
+        currentSlide={currentSlide}
+        isVisible={true}
+        setCurrentSlide={setCurrentSlide}
+        shouldLoop={false}
+        amountOfSlides={10}
       />
     </div>
   );
