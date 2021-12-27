@@ -104,8 +104,8 @@ const NavLeft: React.FC<navButtonsProps> = ({ ...props }) => {
           <IconButton
             buttonIcon={<ChevronLeft />}
             onClick={() => {
-              if (props.currentSlide < 0) {
-                props.setCurrentSlide(() => props.amountOfSlides - 2);
+              if (props.currentSlide < 1) {
+                props.setCurrentSlide(() => props.amountOfSlides - 1);
               } else {
                 props.setCurrentSlide((current) => current - 1);
               }
@@ -207,7 +207,7 @@ export const Carousel: React.FC<carouselProps> = ({ ...props }) => {
           currentSlide={currentSlide}
           isVisible={true}
           setCurrentSlide={setCurrentSlide}
-          shouldLoop={false}
+          shouldLoop={true}
           amountOfSlides={10}
           isDisabled={disableRight}
         />
@@ -226,7 +226,7 @@ export const Carousel: React.FC<carouselProps> = ({ ...props }) => {
           currentSlide={currentSlide}
           isVisible={true}
           setCurrentSlide={setCurrentSlide}
-          shouldLoop={false}
+          shouldLoop={true}
           amountOfSlides={10}
           isDisabled={disableLeft}
         />
