@@ -30,6 +30,16 @@ type navButtonsProps = {
   isDisabled: boolean;
 };
 
+type SlideProps = {
+  element: JSX.Element;
+};
+
+const Slide: React.FC<SlideProps> = ({ ...props }) => {
+  return (
+    <img src={props.element.props.src} className="h-1/4 w-auto rounded-3xl" />
+  );
+};
+
 /**
  * Looping:
  * Assuming you have an array of elements, every time you move onto the next slide,
@@ -185,7 +195,12 @@ export const Carousel: React.FC<carouselProps> = ({ ...props }) => {
     <div>
       {props.children
         ? children.map((i, key) => {
-            return <div key={key}>{i}</div>;
+            return (
+              <div key={key}>
+                {" "}
+                <Slide element={i} />{" "}
+              </div>
+            );
           })
         : ""}
       <Indicator

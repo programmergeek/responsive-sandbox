@@ -8,9 +8,19 @@ function App() {
     <div className="App h-full w-full">
       <div className="dark:bg-darkModeDark w-full h-full">
         <Carousel>
-          <div className="bg-black text-6xl text-center text-white">1</div>
-          <div className="bg-black text-6xl text-center text-white">2</div>
-          <div className="bg-black text-6xl text-center text-white">3</div>
+          <img
+            className="MEep"
+            src="https://c4.wallpaperflare.com/wallpaper/99/475/670/digital-art-artwork-men-moon-fantasy-art-hd-wallpaper-preview.jpg"
+            alt=""
+          />
+          <img
+            src="https://www.boredpanda.com/blog/wp-content/uploads/2021/11/3d-art-digital-renders-pink-landscapes-mo-meid88-fb.png"
+            alt=""
+          />
+          <img
+            src="https://c4.wallpaperflare.com/wallpaper/234/52/1006/3d-landscape-hd-wallpaper-preview.jpg"
+            alt=""
+          />
         </Carousel>
       </div>
     </div>
