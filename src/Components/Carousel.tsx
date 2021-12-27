@@ -27,6 +27,7 @@ type navButtonsProps = {
   isVisible: boolean;
   amountOfSlides: number;
   children?: JSX.Element[];
+  isDisabled: boolean;
 };
 
 /**
@@ -66,8 +67,6 @@ const changeSlideRightLoop = (elements: JSX.Element[]) => {
  */
 
 const NavRight: React.FC<navButtonsProps> = ({ ...props }) => {
-  const [disabled, setDisable] = useState(false);
-
   switch (props.shouldLoop) {
     case true:
       return (
@@ -88,22 +87,16 @@ const NavRight: React.FC<navButtonsProps> = ({ ...props }) => {
     default:
       return (
         <IconButton
-          disabled={disabled}
+          disabled={props.isDisabled}
           buttonIcon={<ChevronRight />}
           onClick={() => {
             props.setCurrentSlide((current) => current + 1);
-            setDisable(() => false);
-            if (props.currentSlide >= props.amountOfSlides - 2) {
-              setDisable(() => true);
-            }
           }}
         />
       );
   }
 };
 const NavLeft: React.FC<navButtonsProps> = ({ ...props }) => {
-  const [disabled, setDisable] = useState(false);
-
   switch (props.shouldLoop) {
     case true:
       return (
@@ -124,14 +117,10 @@ const NavLeft: React.FC<navButtonsProps> = ({ ...props }) => {
     default:
       return (
         <IconButton
-          disabled={disabled}
+          disabled={props.isDisabled}
           buttonIcon={<ChevronLeft />}
           onClick={() => {
             props.setCurrentSlide((current) => current - 1);
-            setDisable(() => false);
-            if (props.currentSlide == 1) {
-              setDisable(() => true);
-            }
           }}
         />
       );
@@ -189,6 +178,8 @@ const Indicator: React.FC<indicatorProps> = ({ ...props }) => {
  */
 export const Carousel: React.FC<carouselProps> = ({ ...props }) => {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
+  const [disableRight, setDisableRight] = useState(false);
+  const [disableLeft, setDisableLeft] = useState(false);
   const children = props.children?.valueOf() as JSX.Element[];
   return (
     <div>
@@ -202,20 +193,44 @@ export const Carousel: React.FC<carouselProps> = ({ ...props }) => {
         numOfSlides={10}
         setCurrentSlide={setCurrentSlide}
       />
-      <NavRight
-        currentSlide={currentSlide}
-        isVisible={true}
-        setCurrentSlide={setCurrentSlide}
-        shouldLoop={false}
-        amountOfSlides={10}
-      />
-      <NavLeft
-        currentSlide={currentSlide}
-        isVisible={true}
-        setCurrentSlide={setCurrentSlide}
-        shouldLoop={false}
-        amountOfSlides={10}
-      />
+      <div
+        onClick={() => {
+          if (currentSlide >= 8) {
+            setDisableRight(() => true);
+          } else {
+            setDisableLeft(() => false);
+            setDisableRight(() => false);
+          }
+        }}
+      >
+        <NavRight
+          currentSlide={currentSlide}
+          isVisible={true}
+          setCurrentSlide={setCurrentSlide}
+          shouldLoop={false}
+          amountOfSlides={10}
+          isDisabled={disableRight}
+        />
+      </div>
+      <div
+        onClick={() => {
+          if (currentSlide <= 1) {
+            setDisableLeft(() => true);
+          } else {
+            setDisableLeft(() => false);
+            setDisableRight(() => false);
+          }
+        }}
+      >
+        <NavLeft
+          currentSlide={currentSlide}
+          isVisible={true}
+          setCurrentSlide={setCurrentSlide}
+          shouldLoop={false}
+          amountOfSlides={10}
+          isDisabled={disableLeft}
+        />
+      </div>
     </div>
   );
 };
