@@ -179,7 +179,7 @@ const Indicator: React.FC<indicatorProps> = ({ ...props }) => {
 export const Carousel: React.FC<carouselProps> = ({ ...props }) => {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const [disableRight, setDisableRight] = useState(false);
-  const [disableLeft, setDisableLeft] = useState(false);
+  const [disableLeft, setDisableLeft] = useState(true);
   const children = props.children?.valueOf() as JSX.Element[];
   return (
     <div>
