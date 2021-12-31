@@ -28,28 +28,6 @@ const Slides: React.FC<{ elements: JSX.Element[]; currentSlide: number }> = ({
   );
 };
 
-const Indicator: React.FC<{ currentSlide: number; amtOfSlides: number }> = ({
-  ...props
-}) => {
-  const indicators = [] as JSX.Element[];
-  for (let i = 0; i < props.amtOfSlides; i++) {
-    if (i === props.currentSlide) {
-      indicators.push(
-        <div className="rounded-full bg-lightModeDark dark:bg-darkModeLight w-4 h-4"></div>
-      );
-    } else {
-      indicators.push(
-        <div className="rounded-full bg-transparent border-4 border-lightModeDark dark:bg-darkModeLight w-4 h-4"></div>
-      );
-    }
-  }
-  return (
-    <div className="flex justify-center mt-10 self-center">
-      {indicators.map((indicator) => indicator)}
-    </div>
-  );
-};
-
 export const Carousel: React.FC<carouselProps> = ({ ...props }) => {
   const [disableLeftNav, updateDisableLeftNav] = useState(true);
   const [disableRightNav, updateDisableRightNav] = useState(false);
@@ -58,7 +36,6 @@ export const Carousel: React.FC<carouselProps> = ({ ...props }) => {
   return (
     <div>
       <Slides elements={slides} currentSlide={currentSlide} />
-      <Indicator currentSlide={currentSlide} amtOfSlides={slides.length} />
     </div>
   );
 };
