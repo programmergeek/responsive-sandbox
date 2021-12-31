@@ -10,17 +10,11 @@ function App() {
         <Carousel>
           <img
             className="MEep"
-            src="https://c4.wallpaperflare.com/wallpaper/99/475/670/digital-art-artwork-men-moon-fantasy-art-hd-wallpaper-preview.jpg"
+            src="https://cdn.wallpapersafari.com/55/49/kr2veP.jpg"
             alt=""
           />
-          <img
-            src="https://www.boredpanda.com/blog/wp-content/uploads/2021/11/3d-art-digital-renders-pink-landscapes-mo-meid88-fb.png"
-            alt=""
-          />
-          <img
-            src="https://c4.wallpaperflare.com/wallpaper/234/52/1006/3d-landscape-hd-wallpaper-preview.jpg"
-            alt=""
-          />
+          <img src="https://wallpaperaccess.com/full/1406840.jpg" alt="" />
+          <img src="https://wallpaperaccess.com/full/1406842.jpg" alt="" />
         </Carousel>
       </div>
     </div>
