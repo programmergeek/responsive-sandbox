@@ -15,25 +15,14 @@ const Slides: React.FC<{ elements: JSX.Element[]; currentSlide: number }> = ({
   return (
     <div className="flex flex-nowrap h-1/2 ">
       {props.elements.map((slide, key) => {
-        if (props.currentSlide === key) {
-          return (
-            <img
-              src={slide.props.src}
-              key={key}
-              alt="slide"
-              className="min-w-[75%] lg:min-w-[42%] mx-1 md:mx-5 md:scale-105 rounded-3xl"
-            />
-          );
-        } else {
-          return (
-            <img
-              src={slide.props.src}
-              key={key}
-              alt="slide"
-              className="min-w-[75%] lg:min-w-[42%] mx-1 md:mx-5 self-center rounded-3xl"
-            />
-          );
-        }
+        return (
+          <img
+            src={slide.props.src}
+            key={key}
+            alt="slide"
+            className="min-w-[75%] lg:min-w-[42%] mx-1 md:mx-5 self-center rounded-3xl"
+          />
+        );
       })}
     </div>
   );
@@ -64,7 +53,7 @@ const Indicator: React.FC<{ currentSlide: number; amtOfSlides: number }> = ({
 export const Carousel: React.FC<carouselProps> = ({ ...props }) => {
   const [disableLeftNav, updateDisableLeftNav] = useState(true);
   const [disableRightNav, updateDisableRightNav] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(1);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const slides = props.children?.valueOf() as JSX.Element[];
   return (
     <div>
