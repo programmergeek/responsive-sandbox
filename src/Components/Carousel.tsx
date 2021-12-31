@@ -21,7 +21,7 @@ const Slides: React.FC<{ elements: JSX.Element[]; currentSlide: number }> = ({
               src={slide.props.src}
               key={key}
               alt="slide"
-              className="w-[60vw] mx-10 scale-110 self-center rounded-3xl"
+              className="w-[100vw] md:w-3/4 lg:w-2/3 mr-3 md:mx-10 md:scale-110 self-center rounded-3xl"
             />
           );
         } else {
@@ -30,7 +30,7 @@ const Slides: React.FC<{ elements: JSX.Element[]; currentSlide: number }> = ({
               src={slide.props.src}
               key={key}
               alt="slide"
-              className="w-[60vw] mx-5 self-center rounded-3xl"
+              className="w-[100vw] md:w-3/4 lg:w-2/3 mr-3 md:mx-5 self-center rounded-3xl"
             />
           );
         }
