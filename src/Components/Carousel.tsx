@@ -13,7 +13,7 @@ const Slides: React.FC<{ elements: JSX.Element[]; currentSlide: number }> = ({
   ...props
 }) => {
   return (
-    <div className="flex flex-nowrap h-fit">
+    <div className="flex flex-nowrap h-1/2 ">
       {props.elements.map((slide, key) => {
         if (props.currentSlide === key) {
           return (
@@ -21,7 +21,7 @@ const Slides: React.FC<{ elements: JSX.Element[]; currentSlide: number }> = ({
               src={slide.props.src}
               key={key}
               alt="slide"
-              className="w-[100vw] md:w-3/4 lg:w-2/3 mr-3 md:mx-10 md:scale-110 self-center rounded-3xl"
+              className="min-w-[75%] lg:min-w-[42%] mx-1 md:mx-5 md:scale-105 rounded-3xl"
             />
           );
         } else {
@@ -30,7 +30,7 @@ const Slides: React.FC<{ elements: JSX.Element[]; currentSlide: number }> = ({
               src={slide.props.src}
               key={key}
               alt="slide"
-              className="w-[100vw] md:w-3/4 lg:w-2/3 mr-3 md:mx-5 self-center rounded-3xl"
+              className="min-w-[75%] lg:min-w-[42%] mx-1 md:mx-5 self-center rounded-3xl"
             />
           );
         }
@@ -55,7 +55,7 @@ const Indicator: React.FC<{ currentSlide: number; amtOfSlides: number }> = ({
     }
   }
   return (
-    <div className="flex justify-center mt-10">
+    <div className="flex justify-center mt-10 self-center">
       {indicators.map((indicator) => indicator)}
     </div>
   );

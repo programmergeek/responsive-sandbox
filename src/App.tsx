@@ -15,6 +15,12 @@ function App() {
           />
           <img src="https://wallpaperaccess.com/full/1406840.jpg" alt="" />
           <img src="https://wallpaperaccess.com/full/1406842.jpg" alt="" />
+          <img src="https://wallpaperaccess.com/full/1406840.jpg" alt="" />
+          <img src="https://wallpaperaccess.com/full/1406842.jpg" alt="" />
+          <img src="https://wallpaperaccess.com/full/1406840.jpg" alt="" />
+          <img src="https://wallpaperaccess.com/full/1406842.jpg" alt="" />
+          <img src="https://wallpaperaccess.com/full/1406840.jpg" alt="" />
+          <img src="https://wallpaperaccess.com/full/1406842.jpg" alt="" />
         </Carousel>
       </div>
     </div>
