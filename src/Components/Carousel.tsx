@@ -18,7 +18,7 @@ const Slides: React.FC<{ elements: JSX.Element[]; currentSlide: number }> = ({
         if (props.currentSlide === key) {
           return (
             <img
-              src={props.elements[key].props.src}
+              src={slide.props.src}
               key={key}
               alt="slide"
               className="w-[60vw] mx-10 scale-110 self-center rounded-3xl"
@@ -27,7 +27,7 @@ const Slides: React.FC<{ elements: JSX.Element[]; currentSlide: number }> = ({
         } else {
           return (
             <img
-              src={props.elements[key].props.src}
+              src={slide.props.src}
               key={key}
               alt="slide"
               className="w-[60vw] mx-5 self-center rounded-3xl"
