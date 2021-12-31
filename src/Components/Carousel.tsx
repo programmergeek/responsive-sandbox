@@ -13,7 +13,7 @@ const Slides: React.FC<{ elements: JSX.Element[]; currentSlide: number }> = ({
   ...props
 }) => {
   return (
-    <div className="flex flex-nowrap h-[52vh]">
+    <div className="flex flex-nowrap h-fit">
       {props.elements.map((slide, key) => {
         if (props.currentSlide === key) {
           return (
@@ -39,6 +39,28 @@ const Slides: React.FC<{ elements: JSX.Element[]; currentSlide: number }> = ({
   );
 };
 
+const Indicator: React.FC<{ currentSlide: number; amtOfSlides: number }> = ({
+  ...props
+}) => {
+  const indicators = [] as JSX.Element[];
+  for (let i = 0; i < props.amtOfSlides; i++) {
+    if (i === props.currentSlide) {
+      indicators.push(
+        <div className="rounded-full bg-lightModeDark dark:bg-darkModeLight w-4 h-4"></div>
+      );
+    } else {
+      indicators.push(
+        <div className="rounded-full bg-transparent border-4 border-lightModeDark dark:bg-darkModeLight w-4 h-4"></div>
+      );
+    }
+  }
+  return (
+    <div className="flex justify-center mt-10">
+      {indicators.map((indicator) => indicator)}
+    </div>
+  );
+};
+
 export const Carousel: React.FC<carouselProps> = ({ ...props }) => {
   const [disableLeftNav, updateDisableLeftNav] = useState(true);
   const [disableRightNav, updateDisableRightNav] = useState(false);
@@ -47,6 +69,7 @@ export const Carousel: React.FC<carouselProps> = ({ ...props }) => {
   return (
     <div>
       <Slides elements={slides} currentSlide={currentSlide} />
+      <Indicator currentSlide={currentSlide} amtOfSlides={slides.length} />
     </div>
   );
 };
