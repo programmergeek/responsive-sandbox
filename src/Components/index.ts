@@ -1,2 +1,2 @@
 export * from "./Buttons";
-export * from "./Carousel";
+export * from "./Carousel/Carousel";
